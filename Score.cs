@@ -29,7 +29,7 @@ namespace Score
             }
             catch (Exception e)
             {
-                Console.WriteLine($"An Error occured while Loaing {e.Message}", e);
+                Console.WriteLine($"An Error occured while Loading {e.Message}", e);
             }
             return new Player();
         }
