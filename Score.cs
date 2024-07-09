@@ -1,11 +1,25 @@
 ﻿using ConsoleApp1;
 
-namespace Score
+namespace GameScore
 {
     public static class Score
     {
         private static string highScoreFilePath = "highscore.txt";
 
+        public static Player CheckHighScore(Player player1, Player player2, Player HighPlayer, string mode)
+        {
+            if (player1.Score > HighPlayer.Score)
+            {
+                HighPlayer.Score = player1.Score;
+                HighPlayer.Name = player1.Name;
+            }
+            if (player2.Score > HighPlayer.Score && mode != "vsComputer")
+            {
+                HighPlayer.Score = player2.Score;
+                HighPlayer.Name = player2.Name;
+            }
+            return HighPlayer;
+        }
 
         public static Player LoadHighScore()
         {

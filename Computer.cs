@@ -10,10 +10,7 @@ namespace Computer
 {
     public partial  class ComputerPlayer : Player
     {
-        public ComputerPlayer (string name = "", int score = 0) : base(score = 0) {
-
-            this.name = "Computer";
-        }
+        public ComputerPlayer (string name = "", int score = 0) : base(name="Computer", score = 0) { }
         private static int FindWinningMove(string[] grid)
         {
             for (int i = 0; i <= 6; i += 3)

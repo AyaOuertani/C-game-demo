@@ -9,15 +9,7 @@ namespace ConsoleApp1
 {
     public partial class Board
     {
-        readonly string[] grid = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-        public bool player1Turn = true;
-        public int numTurns = 0;
-        public Player player1;
-        public Player player2;
-        public delegate void WinEventHandler(string winner);
-        public delegate void EndEventHandler();
-        public event WinEventHandler WinEvent;
-        public event EndEventHandler EndEvent;
+
         public Board(Player player1, Player player2)
         {
             this.player1 = player1;
@@ -53,7 +45,6 @@ namespace ConsoleApp1
 
             return false;
         }
-
         public void PlayerChoice()
         {
             string choice = Console.ReadLine() ?? string.Empty;
@@ -83,7 +74,7 @@ namespace ConsoleApp1
             }
         }
 
-       
+
 
     }
 
