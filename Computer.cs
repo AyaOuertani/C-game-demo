@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game;
+using ConsoleApp1;
 
 namespace Computer
 {
-    public partial class ComputerPlayer
+    public partial  class ComputerPlayer : Player
     {
+        public ComputerPlayer (string name = "", int score = 0) : base(score = 0) {
+
+            this.name = "Computer";
+        }
         private static int FindWinningMove(string[] grid)
         {
             for (int i = 0; i <= 6; i += 3)
@@ -83,25 +88,6 @@ namespace Computer
             return -1;
         }
         public static partial void PlayerChoice(string[] grid, ref int numTurns);
-        public static partial void PlayerChoice(string[] grid, ref int numTurns)
-        {
-            int moveIndex = FindWinningMove(grid);
-
-            if (moveIndex == -1)
-            {
-                moveIndex = BlockOpponentWin(grid);
-            }
-            if (moveIndex == -1)
-            {
-                Random random = new Random();
-                do
-                {
-                    moveIndex = random.Next(0, 9);
-                } while (grid[moveIndex] == "X" || grid[moveIndex] == "O");
-            }
-            grid[moveIndex] = "O";
-            numTurns++;
-        }
 
     }
 }
