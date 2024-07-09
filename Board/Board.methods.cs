@@ -1,4 +1,5 @@
 ﻿using Computer;
+using ConsoleApp1.Play;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,10 @@ namespace ConsoleApp1
 {
     public partial class Board
     {
-
         public Board(Player player1, Player player2)
         {
-            this.player1 = player1;
-            this.player2 = player2;
+            Player1 = player1;
+            Player2 = player2;
         }
         public void PrintGrid()
         {
@@ -22,7 +22,7 @@ namespace ConsoleApp1
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write(grid[i * 3 + j] + "|");
+                    Console.Write(Grid[i * 3 + j] + "|");
                 }
                 Console.WriteLine("\n------");
             }
@@ -31,16 +31,16 @@ namespace ConsoleApp1
         {
             for (int i = 0; i <= 6; i += 3)
             {
-                if (grid[i] == grid[i + 1] && grid[i + 1] == grid[i + 2])
+                if (Grid[i] == Grid[i + 1] && Grid[i + 1] == Grid[i + 2])
                     return true;
             }
             for (int i = 0; i < 3; i++)
             {
-                if (grid[i] == grid[i + 3] && grid[i + 3] == grid[i + 6])
+                if (Grid[i] == Grid[i + 3] && Grid[i + 3] == Grid[i + 6])
                     return true;
             }
 
-            if ((grid[0] == grid[4] && grid[4] == grid[8]) || (grid[2] == grid[4] && grid[4] == grid[6]))
+            if ((Grid[0] == Grid[4] && Grid[4] == Grid[8]) || (Grid[2] == Grid[4] && Grid[4] == Grid[6]))
                 return true;
 
             return false;
@@ -48,18 +48,18 @@ namespace ConsoleApp1
         public void PlayerChoice()
         {
             string choice = Console.ReadLine() ?? string.Empty;
-            if (grid.Contains(choice))
+            if (Grid.Contains(choice))
             {
                 int gridIndex = Convert.ToInt32(choice) - 1;
 
-                if (grid[gridIndex] != "X" && grid[gridIndex] != "O")
+                if (Grid[gridIndex] != "X" && Grid[gridIndex] != "O")
                 {
-                    if (player1Turn)
-                        grid[gridIndex] = "X";
+                    if (Player1Turn)
+                        Grid[gridIndex] = "X";
                     else
-                        grid[gridIndex] = "O";
+                        Grid[gridIndex] = "O";
 
-                    numTurns++;
+                    NumTurns++;
                 }
                 else
                 {
@@ -73,8 +73,6 @@ namespace ConsoleApp1
                 PlayerChoice();
             }
         }
-
-
 
     }
 

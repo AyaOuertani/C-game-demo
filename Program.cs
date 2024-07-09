@@ -1,6 +1,7 @@
 ﻿using Computer;
 using ConsoleApp1;
-using GameScore;
+using ConsoleApp1.Play;
+
 namespace Game
 {
     public static class Program
@@ -11,12 +12,12 @@ namespace Game
             Console.WriteLine("Do You want to play vs Computer ? :(yes/no):");
             if (Console.ReadLine().ToLower() == "yes")
             {
-                GameRound.mode = "vsComputer";
+                GameRound.Mode = "vsComputer";
                 player2 = new ComputerPlayer();
             }
             else
             {
-                GameRound.mode = "vsPlyayer";
+                GameRound.Mode = "vsPlyayer";
                 GameRound.PlayersCreation(out player2);
             }
         }
@@ -27,15 +28,15 @@ namespace Game
             GameRound.PlayersCreation(out player1);
             ModeChoice(out player2,GameRound);
             Player HighPlayer = Score.LoadHighScore();
-            while (GameRound.res)
+            while (GameRound.Result)
             {
                 Board Round = new Board(player1, player2);
                 Round.WinEvent += GameRound.HandleWinEvent;
                 Round.EndEvent += GameRound.HandleEndEvent;
-                Round.Play(player1, player2, GameRound.mode);
-                GameRound.Display(player1, player2, HighPlayer, GameRound.mode);
+                Round.Play(player1, player2, GameRound.Mode);
+                GameRound.Display(player1, player2, HighPlayer, GameRound.Mode);
                 Predicate<bool> restartPredicate = new Predicate<bool>(GameRound.Restart);
-                GameRound.res = restartPredicate.Invoke(true);
+                GameRound.Result = restartPredicate.Invoke(true);
             }
         }
     }

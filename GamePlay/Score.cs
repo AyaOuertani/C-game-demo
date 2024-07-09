@@ -1,24 +1,26 @@
-﻿using ConsoleApp1;
+﻿using System;
 
-namespace GameScore
+
+
+namespace ConsoleApp1.Play
 {
     public static class Score
     {
         private static string highScoreFilePath = "highscore.txt";
 
-        public static Player CheckHighScore(Player player1, Player player2, Player HighPlayer, string mode)
+        public static Player CheckHighScore(Player player1, Player player2, Player highPlayer, string mode)
         {
-            if (player1.Score > HighPlayer.Score)
+            if (player1.Score > highPlayer.Score)
             {
-                HighPlayer.Score = player1.Score;
-                HighPlayer.Name = player1.Name;
+                highPlayer.Score = player1.Score;
+                highPlayer.Name = player1.Name;
             }
-            if (player2.Score > HighPlayer.Score && mode != "vsComputer")
+            if (player2.Score > highPlayer.Score && mode != "vsComputer")
             {
-                HighPlayer.Score = player2.Score;
-                HighPlayer.Name = player2.Name;
+                highPlayer.Score = player2.Score;
+                highPlayer.Name = player2.Name;
             }
-            return HighPlayer;
+            return highPlayer;
         }
 
         public static Player LoadHighScore()
@@ -41,11 +43,11 @@ namespace GameScore
             }
             return new Player();
         }
-        public static void SaveHighScore(Player HighPlayer)
+        public static void SaveHighScore(Player highPlayer)
         {
             try
             {
-                File.WriteAllText(highScoreFilePath, $"{HighPlayer.Name},{HighPlayer.Score}");
+                File.WriteAllText(highScoreFilePath, $"{highPlayer.Name},{highPlayer.Score}");
             }
             catch (Exception e)
             {

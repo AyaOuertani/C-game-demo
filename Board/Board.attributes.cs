@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp1.Play;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ namespace ConsoleApp1
 {
     public partial class Board
     {
-        readonly string[] grid = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-        public bool player1Turn = true;
-        public int numTurns = 0;
-        public Player player1;
-        public Player player2;
+        readonly string[] Grid = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        public bool Player1Turn = true;
+        public int NumTurns = 0;
+        public Player Player1;
+        public Player Player2;
         public delegate void WinEventHandler(string winner);
         public delegate void EndEventHandler();
         public event WinEventHandler WinEvent;

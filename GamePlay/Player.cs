@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameScore;
-namespace ConsoleApp1
+
+namespace ConsoleApp1.Play
 {
     public class Player
     {
@@ -17,13 +17,14 @@ namespace ConsoleApp1
             Score = score;
         }
 
-        public void DisplayPlayerScore (int PlayerNumbr) {
-            Console.WriteLine($"\nPlayer{PlayerNumbr} : {Name}                Score: {Score}");
+        public void DisplayPlayerScore(int playerNumbr)
+        {
+            Console.WriteLine($"\nPlayer{playerNumbr} : {Name}                Score: {Score}");
         }
         public void DisplayAndSaveHigherScore(Player player)
         {
             Console.WriteLine($"\nPlayer Higher : {Name}                Score: {Score}");
-            GameScore.Score.SaveHighScore(player);
+            ConsoleApp1.Play.Score.SaveHighScore(player);
         }
     }
 }

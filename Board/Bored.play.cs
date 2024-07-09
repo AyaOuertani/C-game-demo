@@ -1,4 +1,5 @@
 ﻿using Computer;
+using ConsoleApp1.Play;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,10 @@ namespace ConsoleApp1
     {
         public void Play(Player player1, Player player2, string mode)
         {
-            while (!Victory() && numTurns != 9)
+            while (!Victory() && NumTurns != 9)
             {
                 PrintGrid();
-                if (player1Turn)
+                if (Player1Turn)
                 {
                     Console.WriteLine("Player 1 Turn!");
                     PlayerChoice();
@@ -25,17 +26,17 @@ namespace ConsoleApp1
                     Console.WriteLine("Player 2 Turn!");
                     if (mode == "vsComputer")
                     {
-                        ComputerPlayer.PlayerChoice(grid, ref numTurns);
+                        ComputerPlayer.PlayerChoice(Grid, ref NumTurns);
                     }
                     else
                         PlayerChoice();
                 }
-                player1Turn = !player1Turn;
+                Player1Turn = !Player1Turn;
             }
             PrintGrid();
             if (Victory())
             {
-                if (!player1Turn)
+                if (!Player1Turn)
                 {
                     WinEvent.Invoke(player1.Name);
                     player1.Score += 10;
