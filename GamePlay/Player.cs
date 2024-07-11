@@ -16,15 +16,5 @@ namespace ConsoleApp1.Play
             Name = name;
             Score = score;
         }
-
-        public void DisplayPlayerScore(int playerNumbr)
-        {
-            Console.WriteLine($"\nPlayer{playerNumbr} : {Name}                Score: {Score}");
-        }
-        public void DisplayAndSaveHigherScore(Player player)
-        {
-            Console.WriteLine($"\nPlayer Higher : {Name}                Score: {Score}");
-            ConsoleApp1.Play.Score.SaveHighScore(player);
-        }
     }
 }

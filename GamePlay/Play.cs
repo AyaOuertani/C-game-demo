@@ -1,10 +1,4 @@
-﻿using Computer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Game;
+﻿using ConsoleApp1.Extensions;
 
 namespace ConsoleApp1.Play
 {
@@ -23,9 +17,9 @@ namespace ConsoleApp1.Play
         {
 
             highPlayer = Score.CheckHighScore(player1, player2, highPlayer, mode);
-            player1.DisplayPlayerScore(1);
-            player2.DisplayPlayerScore(2);
-            highPlayer.DisplayAndSaveHigherScore(highPlayer);
+            player1.DisplayScore(1);
+            player2.DisplayScore(2);
+            highPlayer.DisplayAndSaveHigherScore();
 
         }
         public bool Restart(bool result)
